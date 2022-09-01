@@ -25,11 +25,11 @@ for m in months:
     model += (8.8*x[0][1][m] + 6.1*x[1][1][m] + 2.0*x[2][1][m] + 4.2*x[3][1][m] + 5.0*x[4][1][m] - 6*y[m] <= 0, f"max-hardness{m}")
     model += (8.8*x[0][1][m] + 6.1*x[1][1][m] + 2.0*x[2][1][m] + 4.2*x[3][1][m] + 5.0*x[4][1][m] - 3*y[m] >= 0, f"min-hardness{m}")
     # Set the objectives
-    model += (-1* m_rate[m][0] * x[0][0][m] + \
-              -1* m_rate[m][1] * x[1][0][m] + \
-              -1* m_rate[m][2] * x[2][0][m] + \
-              -1* m_rate[m][3] * x[3][0][m] + \
-              -1* m_rate[m][4] * x[4][0][m] + \
+    model += (-1* m_rate[m][0] * x[0][0][m] - 5 * x[0][2][m] + \
+              -1* m_rate[m][1] * x[1][0][m] - 5 * x[1][2][m] + \
+              -1* m_rate[m][2] * x[2][0][m] - 5 * x[2][2][m] + \
+              -1* m_rate[m][3] * x[3][0][m] - 5 * x[3][2][m] + \
+              -1* m_rate[m][4] * x[4][0][m] - 5 * x[4][2][m] + \
               150 * y[m])
 # Additional storage constraints
 for t in types:
